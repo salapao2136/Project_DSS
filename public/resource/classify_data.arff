@@ -1,0 +1,133 @@
+% งานจัดกลุ่มนักเรียน
+% attributes
+% 1.  id                   norminal
+% 2.  gender               ชาย=M,หญิง=F
+% 3.	age                  numeric
+% 4.	level                1,2,3,4
+% 5.	section              A,B,C,D
+% 6.	gpa                  {'\'(-inf-2.18]\'','\'(2.18-2.94]\'','\'(2.94-inf)\''}
+% 7.	into_university      โควต้าพื้นที่ = a, โควต้าเรียนดี = g, รับตรง = d, Admission = am
+% 8.	finish_school        วิทย์ - คณิต = sm, ศิลป์ - คำนวณ = am, ศิลป์ - ภาษา = al, ปวช. = c
+% 9.	province_school      เหนือ = N, อีสาน = NE, กลาง = C, ตะวันออก = E, ใต้ = S
+% 10.	spacial_classes      เรียนพิเศษ = T, ไม่เรียนพิเศษ = F
+% 11.	family_revenue       ไม่เกิน 150,000 บาท = 1, 150,001 - 300,000 บาท = 2, 300,001 - 450,000 บาท = 3, มากกว่า 450,001 บาท = 4
+% 12.	loan                 กู้ = T, ไม่กู้ = F
+% 13.	part-time            ทำ = T, ไม่ได้ทำ = F
+% 14.	join_activities      ไม่เลย = N, เป็นบางครั้ง = S, ค่อนข้างบ่อย = U, เป็นประจำ = F
+% 15.	working              ทำคนเดียว = A, ทำเป็นกลุ่ม = G
+% 16.	leader               ไม่เลย = N, เป็นบางครั้ง = S, ค่อนข้างบ่อย = U, เป็นประจำ = F
+% made by Ton Piromplad
+
+@relation 'clustering_student_clustered-weka
+
+@attribute gender {M,F}
+@attribute age numeric
+@attribute section {A,B,C,D}
+@attribute into_university {a,g,d,am}
+@attribute finish_school {sm,am,al,c}
+@attribute province_school {N,NE,C,E,S}
+@attribute spacial_classes {T,F}
+@attribute family_revenue {1,2,3,4}
+@attribute loan {T,F}
+@attribute part-time {T,F}
+@attribute join_activities {N,S,U,F}
+@attribute working {A,G}
+@attribute leader {N,S,U,F}
+@attribute class {cluster0,cluster1,cluster2}
+
+@data
+M,21,A,g,am,C,T,3,F,T,F,G,U,cluster1
+M,21,A,g,c,C,F,1,F,T,U,G,F,cluster1
+M,20,A,d,am,E,T,1,T,T,S,G,U,cluster2
+F,21,B,a,sm,E,F,1,T,T,S,G,S,cluster2
+M,20,C,am,sm,C,F,2,F,T,S,A,N,cluster0
+M,20,D,d,sm,E,F,2,F,T,U,G,S,cluster0
+F,22,D,a,am,C,T,4,F,F,F,G,N,cluster1
+M,21,B,am,am,C,T,3,F,F,U,G,S,cluster1
+M,22,A,am,am,C,F,4,F,F,S,A,S,cluster1
+F,21,D,a,am,C,F,3,F,T,U,G,F,cluster1
+M,20,B,a,sm,C,T,2,F,T,U,G,S,cluster0
+M,21,A,am,am,C,F,2,F,T,F,G,U,cluster1
+F,20,B,g,sm,E,T,4,F,F,U,G,S,cluster2
+M,20,B,g,c,C,F,2,T,T,U,A,F,cluster0
+M,20,A,am,sm,E,T,1,F,F,S,A,S,cluster2
+M,20,C,am,al,C,F,4,F,T,S,A,S,cluster0
+F,20,C,a,sm,C,F,4,F,F,U,G,S,cluster1
+F,19,A,d,sm,C,F,1,T,T,S,G,S,cluster2
+M,22,B,g,am,C,F,1,T,T,F,G,S,cluster0
+F,22,D,a,am,C,T,4,F,F,F,G,N,cluster1
+M,21,A,g,am,N,F,1,T,T,S,A,S,cluster2
+M,22,A,am,am,C,F,1,T,F,U,G,S,cluster1
+M,19,B,a,sm,E,F,1,T,T,U,A,S,cluster2
+M,20,D,am,sm,C,F,2,T,T,S,A,N,cluster0
+M,19,D,d,am,C,F,4,F,T,F,A,S,cluster0
+F,20,B,g,sm,E,F,4,F,F,S,G,N,cluster2
+M,20,A,d,sm,C,F,2,T,F,S,A,N,cluster0
+F,19,A,am,sm,C,F,1,T,T,S,A,S,cluster2
+M,20,D,d,sm,C,F,2,F,F,S,G,S,cluster0
+M,20,B,g,c,C,F,2,T,T,U,A,F,cluster0
+M,20,C,a,sm,E,F,2,F,F,U,A,N,cluster2
+M,19,A,am,am,E,F,1,F,F,S,G,S,cluster1
+M,20,C,am,sm,E,F,2,F,T,U,G,S,cluster0
+F,19,A,a,sm,E,F,4,F,F,S,G,S,cluster2
+M,18,B,a,c,C,F,2,T,F,U,G,S,cluster0
+M,19,B,a,sm,E,F,1,T,T,U,A,S,cluster2
+M,20,D,am,sm,C,F,2,F,T,S,A,S,cluster0
+M,20,A,g,am,C,F,1,F,F,U,G,S,cluster1
+M,19,B,g,am,C,F,1,T,T,S,G,S,cluster0
+M,19,B,a,sm,E,T,1,F,F,U,G,S,cluster0
+F,19,A,am,sm,C,F,1,F,T,U,G,S,cluster0
+M,19,B,am,sm,C,F,2,F,T,F,G,F,cluster0
+M,19,B,am,sm,C,F,2,F,T,F,G,F,cluster0
+M,19,A,a,am,NE,F,3,F,F,F,G,U,cluster1
+M,20,B,am,am,C,F,2,F,T,S,A,U,cluster0
+F,19,A,a,sm,E,F,1,T,F,U,G,S,cluster2
+F,19,B,g,c,C,F,4,F,F,U,G,N,cluster0
+M,20,B,g,sm,NE,T,4,F,F,U,A,F,cluster2
+M,19,B,am,am,C,F,2,F,T,S,G,S,cluster0
+M,19,B,d,sm,C,F,2,F,T,S,A,N,cluster0
+F,19,B,a,am,E,F,2,F,T,F,G,S,cluster0
+M,19,A,am,sm,C,F,4,F,T,S,G,S,cluster0
+M,19,A,am,am,C,F,1,F,F,U,A,S,cluster1
+M,20,B,am,al,C,F,4,F,T,S,G,S,cluster0
+M,19,C,am,am,C,F,2,F,F,F,G,N,cluster1
+M,21,B,am,sm,E,F,4,F,T,N,A,S,cluster2
+M,18,D,g,am,C,F,2,F,T,F,A,U,cluster0
+M,20,C,am,al,C,F,1,F,T,F,G,S,cluster0
+M,21,A,am,sm,C,F,3,F,F,F,G,S,cluster1
+M,20,B,am,al,C,F,3,T,T,U,G,S,cluster0
+F,19,A,a,sm,E,F,2,F,F,S,A,U,cluster2
+M,20,B,g,am,C,T,2,F,F,U,G,S,cluster1
+F,19,C,g,am,C,F,2,F,T,S,G,U,cluster0
+M,21,B,am,am,C,F,4,F,T,U,A,S,cluster1
+M,19,D,g,sm,E,F,1,T,T,F,A,S,cluster2
+M,20,A,am,sm,E,F,1,F,F,S,A,S,cluster2
+F,19,D,g,am,E,T,1,T,T,U,G,S,cluster2
+F,19,B,d,sm,E,T,3,T,T,S,G,S,cluster0
+M,19,D,a,am,C,T,4,F,F,U,G,S,cluster1
+M,20,D,am,sm,C,F,2,T,T,S,A,S,cluster0
+M,19,C,am,am,C,F,2,T,T,U,A,S,cluster1
+M,21,C,d,am,C,F,1,T,F,F,G,S,cluster1
+M,21,C,am,sm,S,F,2,F,F,F,G,S,cluster1
+F,21,C,d,sm,E,F,2,T,F,S,G,S,cluster1
+F,21,B,g,c,S,F,2,T,T,S,A,S,cluster2
+M,21,B,a,sm,C,F,4,F,T,S,A,F,cluster2
+F,22,A,am,c,C,F,4,F,F,N,G,N,cluster1
+F,21,C,am,sm,C,T,1,F,T,S,G,S,cluster0
+M,21,A,am,am,C,F,2,F,F,U,G,S,cluster1
+F,21,B,am,sm,C,F,3,F,T,S,A,N,cluster2
+F,21,A,g,sm,S,F,2,F,F,S,G,S,cluster1
+M,21,B,am,am,C,F,4,F,T,U,A,S,cluster1
+M,21,B,am,am,E,F,2,F,F,F,G,S,cluster1
+F,22,D,a,sm,E,F,2,T,T,S,G,N,cluster2
+M,21,A,am,sm,C,F,2,T,T,U,G,U,cluster1
+M,21,A,d,sm,E,F,2,F,F,S,A,S,cluster1
+M,22,A,am,am,C,F,1,T,F,U,G,S,cluster1
+M,21,B,d,sm,C,F,2,F,T,S,A,S,cluster0
+F,22,D,a,am,C,F,3,F,F,S,A,N,cluster2
+M,22,A,d,am,C,F,3,F,F,S,A,S,cluster1
+M,23,B,a,sm,E,T,4,F,T,F,A,F,cluster2
+M,22,A,d,am,C,T,2,F,F,F,A,F,cluster1
+M,25,A,d,c,E,F,2,F,F,S,G,S,cluster1
+M,22,B,a,am,E,F,2,F,F,U,G,S,cluster1
+M,21,B,am,am,C,F,3,F,F,U,A,S,cluster1

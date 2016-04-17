@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta charset="utf-8">
+        <title>Weka</title>
+        <!--Import Google Icon Font-->
+        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!--Import materialize.css-->
+        <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection"/>
+        <!--Import jQuery before materialize.js-->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="js/materialize.min.js"></script>
+        <script src="js/angular.min.js"></script>
+        <script src="js/app.js"></script>
+        <script type="text/javascript" src="js/angular-materialize.js"></script>
+    </head>
+    <body ng-app="wekaApp" ng-controller="wekaCtrl">
+        <nav class="z-depth-0 blue-grey darken-1">
+            <div class="nav-wrapper">
+                <a href="#" class="brand-logo center">STUDENT CLASSIFY</a>
+            </div>
+        </nav>
+        <div class="container">
+            <br>
+            <form ng-submit="post()">
+
+                <div class="row">
+                    <div ng-repeat="use in formData">
+                        <div class="input-field col s12 m12 l12 ">
+                            <h5 class="left"> {{labels[$index]}} </h5>
+                            <select data-ng-model="form[$index]" ng-options="val.value as val.name for val in ::use" material-select watch></select>
+
+                        </div>
+                    </div>
+
+                    <div class="input-field col s12 m12 l12 center">
+                        <button ng-click="post()" href="#modal1" class="modal-trigger btn waves-effect waves-light light-blue darken-2 z-depth-0 " type="submit" name="action">Submit
+                            <i class="material-icons right">send</i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div id="modal1" class="modal modal-fixed-footer center">
+            <div class="modal-content " ng-show="showModel">
+                <h5>คำตอบที่ได้คือ
+                    {{classify}}</h5>
+                <h5>ได้ความน่าจะเป็นเท่ากับ
+                    {{resRe}}</h5>
+            </div>
+            <div class="preloader-wrapper big active" ng-hide="showModel" style="margin-top:5%">
+                <div class="spinner-layer spinner-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="gap-patch">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+
+                <div class="spinner-layer spinner-red">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="gap-patch">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+
+                <div class="spinner-layer spinner-yellow">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="gap-patch">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+
+                <div class="spinner-layer spinner-green">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="gap-patch">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="page-footer z-depth-0 blue-grey darken-1">
+            <div class="container">
+                <div class="row">
+                    <div class="col l12 s12">
+                        <h5 class="white-text">HOMEWORK</h5>
+                        <div class="row valign-wrapper">
+                            <div class="col l1 s1">
+                                <a class="grey-text text-lighten-4 right " href="https://www.facebook.com/ton.piromplad"><img width="50px" class="circle responsive-img right" src="https://scontent.fbkk5-2.fna.fbcdn.net/v/t1.0-9/12592672_10204651244595919_4704722277505192626_n.jpg?oh=91b31a9d3fb36e765501478417144ac8&oe=57B1FDC8"></a>
+                            </div>
+                            <div class="col l11 s10">
+                                <p class="grey-text text-lighten-4 left">Made by Chanwit Piromplad IT_3RA 5606021610020
+                                    <br>KMUTNB Prachinburi campus.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <div class="container">
+                    <a class="grey-text text-lighten-4 left " href="https://www.facebook.com/ton.piromplad">© 2016 Ton Piromplad</a>
+                    <a class="grey-text text-lighten-4 right " href="">IT@KMUTNB</a>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

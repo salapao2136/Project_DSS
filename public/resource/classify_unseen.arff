@@ -1,0 +1,19 @@
+@relation 'clustering_student_clustered-weka
+
+@attribute gender {M,F}
+@attribute age numeric
+@attribute section {A,B,C,D}
+@attribute into_university {a,g,d,am}
+@attribute finish_school {sm,am,al,c}
+@attribute province_school {N,NE,C,E,S}
+@attribute spacial_classes {T,F}
+@attribute family_revenue {1,2,3,4}
+@attribute loan {T,F}
+@attribute part-time {T,F}
+@attribute join_activities {N,S,U,F}
+@attribute working {A,G}
+@attribute leader {N,S,U,F}
+@attribute class {cluster0,cluster1,cluster2}
+
+@data
+'M','21','A','d','sm','E','F','2','F','F','S','A','S',?
