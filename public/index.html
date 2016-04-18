@@ -16,114 +16,292 @@
         <script type="text/javascript" src="js/angular-materialize.js"></script>
     </head>
     <body ng-app="wekaApp" ng-controller="wekaCtrl">
-        <nav class="z-depth-0 blue-grey darken-1">
+    <style>
+        .parallax-container {
+            height: 250px;
+        }
+        .tabs .tab a.have {
+          color: #00897b;
+        }
+    </style>
+
+        <nav class="z-depth-0 light-blue darken-1">
             <div class="nav-wrapper">
                 <a href="#" class="brand-logo center">STUDENT CLASSIFY</a>
             </div>
         </nav>
-        <div class="container">
-            <br>
+        <div class="parallax-container">
+            <div class="parallax"><img src="http://www.meekhao.com/wp-content/uploads/2016/02/harry-worst21.jpg"></div>
+        </div>
+        <div class="row" ng-if="true">
+            <div class="col s12">
+                <ul class="tabs" tabs>
+                  {{checkHave()}}
+                    <li class="tab col s3">
+                        <a  class="test1 active" href="#test1">ข้อ 1</a>
+                    </li>
+                    <li class="tab col s3">
+                        <a class="test2" href="#test2">ข้อ 2</a>
+                    </li>
+                    <li class="tab col s3">
+                        <a class="test3" href="#test3">ข้อ 3</a>
+                    </li>
+                    <li class="tab col s3">
+                        <a class="test4" href="#test4">ข้อ 4</a>
+                    </li>
+                    <li class="tab col s3">
+                        <a class="test5" href="#test5">ข้อ 5</a>
+                    </li>
+                    <li class="tab col s3">
+                        <a class="test6" href="#test6">ข้อ 6</a>
+                    </li>
+                    <li class="tab col s3">
+                        <a class="test7" href="#test7">ข้อ 7</a>
+                    </li>
+                    <li class="tab col s3">
+                        <a class="test8" href="#test8">ข้อ 8</a>
+                    </li>
+                    <li class="tab col s3">
+                        <a class="test9" href="#test9">ข้อ 9</a>
+                    </li>
+                    <li class="tab col s3">
+                        <a class="test10" href="#test10">ข้อ 10</a>
+                    </li>
+                    <li class="tab col s3">
+                        <a class="test11" href="#test11">ข้อ 11</a>
+                    </li>
+                    <li class="tab col s3">
+                        <a class="test12" href="#test12">ข้อ 12</a>
+                    </li>
+                    <li class="tab col s3">
+                        <a class="test13" href="#test13">ข้อ 13</a>
+                    </li>
+                </ul>
+                <div class="progress">
+                    <div class="determinate" style="width: {{percentage()}}%"></div>
+                </div>
+            </div>
             <form ng-submit="post()">
+                <div class="container">
+                    <div id="test1" class="col s12">
+                        <h5 class="left">
+                            {{labels[0]}}
+                        </h5><br><br>
+                        <p ng-repeat="val in formData[0]">
+                            <input class="with-gap" ng-model="form[0]" ng-value="val.value" type="radio" id="form0{{$index}}"/>
+                            <label for="form0{{$index}}" class="black-text">{{val.name}}</label>
+                        </p>
 
-                <div class="row">
-                    <div ng-repeat="use in formData">
-                        <div class="input-field col s12 m12 l12 ">
-                            <h5 class="left"> {{labels[$index]}} </h5>
-                            <select data-ng-model="form[$index]" ng-options="val.value as val.name for val in ::use" material-select watch></select>
+                    </div>
+                    <div id="test2" class="col s12">
+                        <h5 class="left">
+                            {{labels[1]}}
+                        </h5>
+                        <input class="with-gap" ng-model="form[1]" ng-value="form[1]" type="number" min="0" max="99"/>
+                    </div>
+                    <div id="test3" class="col s12">
+                        <h5 class="left">
+                            {{labels[2]}}
+                        </h5><br><br>
+                        <p ng-repeat="val in formData[2]">
+                            <input class="with-gap" ng-model="form[2]" ng-value="val.value" type="radio" id="form2{{$index}}"/>
+                            <label for="form2{{$index}}" class="black-text">{{val.name}}</label>
+                        </p>
+                    </div>
+                    <div id="test4" class="col s12">
+                        <h5 class="left">
+                            {{labels[3]}}
+                        </h5><br><br>
+                        <p ng-repeat="val in formData[3]">
+                            <input class="with-gap" ng-model="form[3]" ng-value="val.value" type="radio" id="form3{{$index}}"/>
+                            <label for="form3{{$index}}" class="black-text">{{val.name}}</label>
+                        </p>
+                    </div>
+                    <div id="test5" class="col s12">
+                        <h5 class="left">
+                            {{labels[4]}}
+                        </h5><br><br>
+                        <p ng-repeat="val in formData[4]">
+                            <input class="with-gap" ng-model="form[4]" ng-value="val.value" type="radio" id="form4{{$index}}"/>
+                            <label for="form4{{$index}}" class="black-text">{{val.name}}</label>
+                        </p>
+                    </div>
+                    <div id="test6" class="col s12">
+                        <h5 class="left">
+                            {{labels[5]}}
+                        </h5><br><br>
+                        <p ng-repeat="val in formData[5]">
+                            <input class="with-gap" ng-model="form[5]" ng-value="val.value" type="radio" id="form5{{$index}}"/>
+                            <label for="form5{{$index}}" class="black-text">{{val.name}}</label>
+                        </p>
+                    </div>
+                    <div id="test7" class="col s12">
+                        <h5 class="left">
+                            {{labels[6]}}
+                        </h5><br><br>
+                        <p ng-repeat="val in formData[6]">
+                            <input class="with-gap" ng-model="form[6]" ng-value="val.value" type="radio" id="form6{{$index}}"/>
+                            <label for="form6{{$index}}" class="black-text">{{val.name}}</label>
+                        </p>
+                    </div>
+                    <div id="test8" class="col s12">
+                        <h5 class="left">
+                            {{labels[7]}}
+                        </h5><br><br>
+                        <p ng-repeat="val in formData[7]">
+                            <input class="with-gap" ng-model="form[7]" ng-value="val.value" type="radio" id="form7{{$index}}"/>
+                            <label for="form7{{$index}}" class="black-text">{{val.name}}</label>
+                        </p>
+                    </div>
+                    <div id="test9" class="col s12">
+                        <h5 class="left">
+                            {{labels[8]}}
+                        </h5><br><br>
+                        <p ng-repeat="val in formData[8]">
+                            <input class="with-gap" ng-model="form[8]" ng-value="val.value" type="radio" id="form8{{$index}}"/>
+                            <label for="form8{{$index}}" class="black-text">{{val.name}}</label>
+                        </p>
+                    </div>
+                    <div id="test10" class="col s12">
+                        <h5 class="left">
+                            {{labels[9]}}
+                        </h5><br><br>
+                        <p ng-repeat="val in formData[9]">
+                            <input class="with-gap" ng-model="form[9]" ng-value="val.value" type="radio" id="form9{{$index}}"/>
+                            <label for="form9{{$index}}" class="black-text">{{val.name}}</label>
+                        </p>
+                    </div>
+                    <div id="test11" class="col s12">
+                        <h5 class="left">
+                            {{labels[10]}}
+                        </h5><br><br>
+                        <p ng-repeat="val in formData[10]">
+                            <input class="with-gap" ng-model="form[10]" ng-value="val.value" type="radio" id="form10{{$index}}"/>
+                            <label for="form10{{$index}}" class="black-text">{{val.name}}</label>
+                        </p>
+                    </div>
+                    <div id="test12" class="col s12">
+                        <h5 class="left">
+                            {{labels[11]}}
+                        </h5><br><br>
+                        <p ng-repeat="val in formData[11]">
+                            <input class="with-gap" ng-model="form[11]" ng-value="val.value" type="radio" id="form11{{$index}}"/>
+                            <label for="form11{{$index}}" class="black-text">{{val.name}}</label>
+                        </p>
+                    </div>
+                    <div id="test13" class="col s12">
+                        <h5 class="left">
+                            {{labels[12]}}
+                        </h5><br><br>
+                        <p ng-repeat="val in formData[12]">
+                            <input class="with-gap" ng-model="form[12]" ng-value="val.value" type="radio" id="form12{{$index}}"/>
+                            <label for="form12{{$index}}" class="black-text">{{val.name}}</label>
+                        </p>
 
-                        </div>
                     </div>
 
-                    <div class="input-field col s12 m12 l12 center">
-                        <button ng-click="post()" href="#modal1" class="modal-trigger btn waves-effect waves-light light-blue darken-2 z-depth-0 " type="submit" name="action">Submit
+                    <div class="input-field col s12 m12 l12 center" ng-show="percentage() === 100">
+                        <button ng-click="post()" href="#modal1" class="modal-trigger btn-large btn waves-effect waves-light light-blue darken-2 z-depth-0 " type="submit" name="action">Submit
                             <i class="material-icons right">send</i>
                         </button>
                     </div>
                 </div>
+
             </form>
-        </div>
+            <!-- <div class="container">
+                <br>
+                <form ng-submit="post()">
+                    <div ng-repeat="use in formData" class="input-field col s12 m12 l12 ">
 
-        <div id="modal1" class="modal modal-fixed-footer center">
-            <div class="modal-content " ng-show="showModel">
-                <h5>คำตอบที่ได้คือ
-                    {{classify}}</h5>
-                <h5>ได้ความน่าจะเป็นเท่ากับ
-                    {{resRe}}</h5>
+                        <h5 class="left">
+                            {{labels[$index]}}
+                        </h5>
+                        <select data-ng-model="form[$index]" ng-options="val.value as val.name for val in ::use" material-select watch></select>
+
+                    </div>
+
+                </div> -->
+        </form>
+    </div>
+</div>
+<div id="modal1" class="modal modal-fixed-footer center">
+    <div class="modal-content " ng-show="showModel">
+        <h5>คำตอบที่ได้คือ
+            {{classify}}</h5>
+        <h5>ได้ความน่าจะเป็นเท่ากับ
+            {{resRe}}</h5>
+    </div>
+    <div class="preloader-wrapper big active" ng-hide="showModel" style="margin-top:5%">
+        <div class="spinner-layer spinner-blue">
+            <div class="circle-clipper left">
+                <div class="circle"></div>
             </div>
-            <div class="preloader-wrapper big active" ng-hide="showModel" style="margin-top:5%">
-                <div class="spinner-layer spinner-blue">
-                    <div class="circle-clipper left">
-                        <div class="circle"></div>
-                    </div>
-                    <div class="gap-patch">
-                        <div class="circle"></div>
-                    </div>
-                    <div class="circle-clipper right">
-                        <div class="circle"></div>
-                    </div>
-                </div>
-
-                <div class="spinner-layer spinner-red">
-                    <div class="circle-clipper left">
-                        <div class="circle"></div>
-                    </div>
-                    <div class="gap-patch">
-                        <div class="circle"></div>
-                    </div>
-                    <div class="circle-clipper right">
-                        <div class="circle"></div>
-                    </div>
-                </div>
-
-                <div class="spinner-layer spinner-yellow">
-                    <div class="circle-clipper left">
-                        <div class="circle"></div>
-                    </div>
-                    <div class="gap-patch">
-                        <div class="circle"></div>
-                    </div>
-                    <div class="circle-clipper right">
-                        <div class="circle"></div>
-                    </div>
-                </div>
-
-                <div class="spinner-layer spinner-green">
-                    <div class="circle-clipper left">
-                        <div class="circle"></div>
-                    </div>
-                    <div class="gap-patch">
-                        <div class="circle"></div>
-                    </div>
-                    <div class="circle-clipper right">
-                        <div class="circle"></div>
-                    </div>
-                </div>
+            <div class="gap-patch">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+                <div class="circle"></div>
             </div>
         </div>
-        <footer class="page-footer z-depth-0 blue-grey darken-1">
-            <div class="container">
-                <div class="row">
+
+        <div class="spinner-layer spinner-red">
+            <div class="circle-clipper left">
+                <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+                <div class="circle"></div>
+            </div>
+        </div>
+
+        <div class="spinner-layer spinner-yellow">
+            <div class="circle-clipper left">
+                <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+                <div class="circle"></div>
+            </div>
+        </div>
+
+        <div class="spinner-layer spinner-green">
+            <div class="circle-clipper left">
+                <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+                <div class="circle"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="page-footer z-depth-0 blue-grey darken-1" style="margin-top:0px;padding-top:0px">
+    <div class="container">
+        <div class="row" style="margin-bottom:0px">
+            <div class="col l12 s12">
+                <h5 class="white-text">Project DSS 2/2558</h5>
+                <div class="row valign-wrapper" style="margin-bottom:0px">
                     <div class="col l12 s12">
-                        <h5 class="white-text">Project</h5>
-                        <div class="row valign-wrapper">
-                            <div class="col l1 s1">
-                                <a class="grey-text text-lighten-4 right " href="https://www.facebook.com/ton.piromplad"><img width="50px" class="circle responsive-img right" src="https://scontent.fbkk5-2.fna.fbcdn.net/v/t1.0-9/12592672_10204651244595919_4704722277505192626_n.jpg?oh=91b31a9d3fb36e765501478417144ac8&oe=57B1FDC8"></a>
-                            </div>
-                            <div class="col l11 s10">
-                                <p class="grey-text text-lighten-4 left">Made by Chanwit Piromplad IT_3RA 5606021610020
-                                    <br>KMUTNB Prachinburi campus.</p>
-                            </div>
-                        </div>
-
+                        <p class="grey-text text-lighten-4 left">KMUTNB Prachinburi campus.</p>
                     </div>
                 </div>
+
             </div>
-            <div class="footer-copyright">
-                <div class="container">
-                    <a class="grey-text text-lighten-4 left " href="https://www.facebook.com/ton.piromplad">© 2016 Ton Piromplad</a>
-                    <a class="grey-text text-lighten-4 right " href="">IT@KMUTNB</a>
-                </div>
-            </div>
-        </footer>
-    </body>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            <a class="grey-text text-lighten-4 left " href="https://www.facebook.com/ton.piromplad">© 2016 Ton Piromplad</a>
+            <a class="grey-text text-lighten-4 right " href="">IT@KMUTNB</a>
+        </div>
+    </div>
+</footer>
+</body>
 </html>

@@ -2,10 +2,23 @@
 angular.module('wekaApp', ['ui.materialize'])
   .controller('wekaCtrl', function ($scope, $http) {
     $http.get('js/data.json').success((req, res) => {
-      $scope.formData = req
+      $scope.formData = $.map(req, function (value, index) {
+        return [value]
+      })
       $scope.labels = Object.keys(req)
+
+      console.log()
     })
-    $scope.form = ['M','21','A','d','sm','E','F','2','F','F','S','A','S']
+    $scope.form = [null, null, null, null, null, null, null, null, null, null, null, null, null]
+    // $scope.form = ['M', '21', 'A', 'd', 'sm', 'E', 'F', '2', 'F', 'F', 'S', 'A', 'S']
+
+    $scope.checkHave = function () {
+      $scope.form.forEach((element, index, array) => {
+        if (element !== null) $('a.test' + (index + 1)).addClass('have')
+        else if (element === null) $('a.test' + (index + 1)).removeClass('have')
+      })
+    }
+
     $scope.post = function () {
       $scope.showModel = false
       $scope.data = "'" + $scope.form.join("','") + "',?"
@@ -13,6 +26,13 @@ angular.module('wekaApp', ['ui.materialize'])
         var result = req[2].split(' ').filter((item) => item !== '')
         answer(result)
       })
+    }
+
+    $scope.percentage = function () {
+      var have = $scope.form.filter((item) => item !== null)
+      var fullPercent = $scope.form.length
+      var per = (have.length * 100) / fullPercent
+      return Math.round(per)
     }
 
     var answer = function (res) {
@@ -40,4 +60,12 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.modal-trigger').leanModal()
+})
+
+$(document).ready(function () {
+  $('ul.tabs').tabs()
+})
+
+$(document).ready(function () {
+  $('.parallax').parallax()
 })
