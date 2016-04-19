@@ -19,7 +19,7 @@ app.post('/data', jsonParser, function (req, res) {
 })
 
 var runCMD = function (result) {
-  var cmd = "java -classpath 'public/resource/weka.jar' weka.classifiers.trees.J48 -l 'public/resource/bay.model' -T 'public/resource/classify_unseen.arff' -p 0"
+  var cmd = "java -classpath 'public/resource/weka.jar' weka.classifiers.trees.J48 -l 'public/resource/bay2.model' -T 'public/resource/classify_unseen.arff' -p 0"
   exec(cmd, function (error, stdout, stderr) {
     result(stdout.split('\n').filter((item) => item !== ''))
     if (error) console.log(error)

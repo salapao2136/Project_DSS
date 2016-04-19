@@ -1,5 +1,5 @@
 /* global angular, $ */
-angular.module('wekaApp', ['ui.materialize'])
+angular.module('wekaApp', ['ngAnimate', 'ui.materialize'])
   .controller('wekaCtrl', function ($scope, $http) {
     $http.get('js/data.json').success((req, res) => {
       $scope.formData = $.map(req, function (value, index) {
@@ -11,7 +11,9 @@ angular.module('wekaApp', ['ui.materialize'])
     })
     $scope.form = [null, null, null, null, null, null, null, null, null, null, null, null, null]
     // $scope.form = ['M', '21', 'A', 'd', 'sm', 'E', 'F', '2', 'F', 'F', 'S', 'A', 'S']
-
+    $scope.cli = function (tab) {
+      $('ul.tabs').tabs('select_tab', tab)
+    }
     $scope.checkHave = function () {
       $scope.form.forEach((element, index, array) => {
         if (element !== null) $('a.test' + (index + 1)).addClass('have')
@@ -36,9 +38,15 @@ angular.module('wekaApp', ['ui.materialize'])
     }
 
     var answer = function (res) {
-      $scope.resRe = res[3]
+      $scope.resRe = res[3] * 100
       var imgres = res[2].split(':')
-      $scope.classify = imgres[1]
+      if (imgres[1] === 'cluster0') {
+        $scope.classify = 'ไม่ค่อยเหมาะสมเท่าไหร่'
+      } else if (imgres[1] === 'cluster1') {
+        $scope.classify = 'ก็พอได้นะ'
+      } else if (imgres[1] === 'cluster2') {
+        $scope.classify = 'มาร์หว่ะ'
+      }
       $scope.showModel = true
     }
 

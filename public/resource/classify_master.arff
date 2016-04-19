@@ -13,6 +13,6 @@
 @attribute join_activities {N,S,U,F}
 @attribute working {A,G}
 @attribute leader {N,S,U,F}
-@attribute class {cluster0,cluster1,cluster2}
+@attribute Cluster {cluster0,cluster1,cluster2}
 
 @data

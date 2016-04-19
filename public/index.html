@@ -8,22 +8,16 @@
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!--Import materialize.css-->
         <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection"/>
+        <link type="text/css" rel="stylesheet" href="css/style.css" />
         <!--Import jQuery before materialize.js-->
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script type="text/javascript" src="js/materialize.min.js"></script>
         <script src="js/angular.min.js"></script>
+        <script src="js/angular-animate.min.js"></script>
         <script src="js/app.js"></script>
         <script type="text/javascript" src="js/angular-materialize.js"></script>
     </head>
     <body ng-app="wekaApp" ng-controller="wekaCtrl">
-    <style>
-        .parallax-container {
-            height: 250px;
-        }
-        .tabs .tab a.have {
-          color: #00897b;
-        }
-    </style>
 
         <nav class="z-depth-0 light-blue darken-1">
             <div class="nav-wrapper">
@@ -36,9 +30,9 @@
         <div class="row" ng-if="true">
             <div class="col s12">
                 <ul class="tabs" tabs>
-                  {{checkHave()}}
+                    {{checkHave()}}
                     <li class="tab col s3">
-                        <a  class="test1 active" href="#test1">ข้อ 1</a>
+                        <a class="test1 active" href="#test1">ข้อ 1</a>
                     </li>
                     <li class="tab col s3">
                         <a class="test2" href="#test2">ข้อ 2</a>
@@ -91,7 +85,7 @@
                             <input class="with-gap" ng-model="form[0]" ng-value="val.value" type="radio" id="form0{{$index}}"/>
                             <label for="form0{{$index}}" class="black-text">{{val.name}}</label>
                         </p>
-
+                        <button type="button" name="button" ng-click="cli('test2')">ถัดไป</button>
                     </div>
                     <div id="test2" class="col s12">
                         <h5 class="left">
