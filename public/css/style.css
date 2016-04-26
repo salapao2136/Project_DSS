@@ -4,3 +4,12 @@
 .tabs .tab a.have {
     color: #00897b;
 }
+
+.ask {
+  height:350px;
+}
+
+.ask .btn{
+  position: absolute;
+  top: 700px;
+}
