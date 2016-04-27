@@ -30,6 +30,13 @@ app.post('/data', jsonParser, function (req, res) {
   }
 })
 
+app.get('/data', function (req, res) {
+  Student.find(function (err, data) {
+    if (err === null) res.send(data)
+    else res.sendStatus(400)
+  })
+})
+
 var runCMD = function (result) {
   var cmd = "java -classpath 'public/resource/weka.jar' weka.classifiers.trees.J48 -l 'public/resource/bay2.model' -T 'public/resource/classify_unseen.arff' -p 0"
   exec(cmd, function (error, stdout, stderr) {
