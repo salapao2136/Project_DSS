@@ -4,7 +4,7 @@ var bodyParser = require('body-parser')
 var fs = require('fs')
 var jsonParser = bodyParser.json()
 var mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost/dss')
+mongoose.connect('mongodb://root:1234@ds021691.mlab.com:21691/dss_itkmutnb')
 var Schema = mongoose.Schema
 var thingSchema = new Schema({}, { strict: false })
 var Student = mongoose.model('students', thingSchema)
@@ -19,9 +19,10 @@ app.post('/data', jsonParser, function (req, res) {
     create_unseen_arff(req.body.data, (result) => {
       var data = req.body.data
       data = data.split("'")
-      data = data.filter((item) => item != '' && item != ',')
+      data = data.filter((item) => item !== '' && item !== ',')
       data.splice(13, 1)
-      data.push(result[2].split(' ').filter((item) => item !== '')[2].split(':')[1])
+      var add = result[2].split(' ').filter((item) => item !== '')[2].split(':')[1]
+      data.push(add)
       var insert = new Student({data: data})
       insert.save()
       res.send(result)
@@ -42,17 +43,17 @@ var create_unseen_arff = function (data, res) {
   var masterFile = 'public/resource/classify_master.arff'
   var outputFile = 'public/resource/classify_unseen.arff'
 
-  fs.readFile(masterFile, 'utf8', (err, data) => {
+  fs.readFile(masterFile, 'utf8', function (err, data) {
     fs.writeFile(outputFile, data + txt, function (err) {
       if (err) console.log(err)
     })
     if (err) console.log(err)
-    })
-    runCMD((output) => {
-      res(output)
-    })
-  }
-
-  app.listen(app.get('port'), function () {
-    console.log('Server Start at port ', app.get('port'))
   })
+  runCMD(function (output) {
+    res(output)
+  })
+}
+
+app.listen(app.get('port'), function () {
+  console.log('Server Start at port ', app.get('port'))
+})
