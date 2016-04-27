@@ -3,7 +3,11 @@ var app = express()
 var bodyParser = require('body-parser')
 var fs = require('fs')
 var jsonParser = bodyParser.json()
-
+var mongoose = require('mongoose')
+mongoose.connect('mongodb://localhost/dss')
+var Schema = mongoose.Schema
+var thingSchema = new Schema({}, { strict: false })
+var Student = mongoose.model('students', thingSchema)
 app.set('port', (process.env.PORT || 3000))
 
 app.use(express.static('public'))
@@ -13,6 +17,13 @@ var exec = require('child_process').exec
 app.post('/data', jsonParser, function (req, res) {
   if (req.body !== null) {
     create_unseen_arff(req.body.data, (result) => {
+      var data = req.body.data
+      data = data.split("'")
+      data = data.filter((item) => item != '' && item != ',')
+      data.splice(13, 1)
+      data.push(result[2].split(' ').filter((item) => item !== '')[2].split(':')[1])
+      var insert = new Student({data: data})
+      insert.save()
       res.send(result)
     })
   }
@@ -36,12 +47,12 @@ var create_unseen_arff = function (data, res) {
       if (err) console.log(err)
     })
     if (err) console.log(err)
-  })
-  runCMD((output) => {
-    res(output)
-  })
-}
+    })
+    runCMD((output) => {
+      res(output)
+    })
+  }
 
-app.listen(app.get('port'), function () {
-  console.log('Server Start at port ', app.get('port'))
-})
+  app.listen(app.get('port'), function () {
+    console.log('Server Start at port ', app.get('port'))
+  })

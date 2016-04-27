@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta charset="utf-8">
+        <title>WEKA</title>
+        <!--Import Google Icon Font-->
+        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!--Import materialize.css-->
+        <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection"/>
+        <link type="text/css" rel="stylesheet" href="css/style.css"/>
+        <!--Import jQuery before materialize.js-->
+        <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="js/materialize.min.js"></script>
+        <script src="js/angular.min.js"></script>
+        <script src="js/angular-animate.min.js"></script>
+        <script src="js/app.js"></script>
+        <script type="text/javascript" src="js/angular-materialize.js"></script>
+    </head>
+    <body ng-app="wekaApp" ng-controller="wekaCtrl">
+
+        <nav class="z-depth-0 light-blue darken-1">
+            <div class="nav-wrapper">
+                <a href="index.html" class="brand-logo center">STUDENT CLASSIFY</a>
+            </div>
+        </nav>
+        <div class="parallax-container">
+            <div class="parallax"><img src="http://www.meekhao.com/wp-content/uploads/2016/02/harry-worst21.jpg"></div>
+        </div>
+        <div class="row" ng-if="true">
+            <div class="col s12">
+                <ul class="tabs" tabs>
+                    {{checkHave()}}
+                    <li class="tab col s3">
+                        <a class="test1 active" href="#test1">ข้อ 1</a>
+                    </li>
+                    <li class="tab col s3">
+                        <a class="test2" href="#test2">ข้อ 2</a>
+                    </li>
+                    <li class="tab col s3">
+                        <a class="test3" href="#test3">ข้อ 3</a>
+                    </li>
+                    <li class="tab col s3">
+                        <a class="test4" href="#test4">ข้อ 4</a>
+                    </li>
+                    <li class="tab col s3">
+                        <a class="test5" href="#test5">ข้อ 5</a>
+                    </li>
+                    <li class="tab col s3">
+                        <a class="test6" href="#test6">ข้อ 6</a>
+                    </li>
+                    <li class="tab col s3">
+                        <a class="test7" href="#test7">ข้อ 7</a>
+                    </li>
+                    <li class="tab col s3">
+                        <a class="test8" href="#test8">ข้อ 8</a>
+                    </li>
+                    <li class="tab col s3">
+                        <a class="test9" href="#test9">ข้อ 9</a>
+                    </li>
+                    <li class="tab col s3">
+                        <a class="test10" href="#test10">ข้อ 10</a>
+                    </li>
+                    <li class="tab col s3">
+                        <a class="test11" href="#test11">ข้อ 11</a>
+                    </li>
+                    <li class="tab col s3">
+                        <a class="test12" href="#test12">ข้อ 12</a>
+                    </li>
+                    <li class="tab col s3">
+                        <a class="test13" href="#test13">ข้อ 13</a>
+                    </li>
+                </ul>
+                <div class="progress">
+                    <div class="determinate" style="width: {{percentage()}}%"></div>
+                </div>
+            </div>
+            <form ng-submit="post()">
+                <div class="container">
+                    <div id="test1" class="col s12 center ask">
+                        <h5 class="left">
+                            {{labels[0]}}
+                        </h5><br><br>
+                        <p ng-repeat="val in formData[0]">
+                            <input class="with-gap" ng-model="form[0]" ng-value="val.value" type="radio" id="form0{{$index}}" ng-click="cli('test2')"/>
+                            <label for="form0{{$index}}" class="black-text">{{val.name}}</label>
+                        </p>
+                        <button class="btn" type="button" name="button" ng-click="cli('test2')">ถัดไป</button>
+                    </div>
+                    <div id="test2" class="col s12 center ask">
+                        <h5 class="left">
+                            {{labels[1]}}
+                        </h5>
+                        <input class="with-gap" ng-model="form[1]" ng-value="form[1]" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' maxlength="3"/>
+                        <button class="btn" type="button" name="button" ng-click="cli('test3')">ถัดไป</button>
+                    </div>
+                    <div id="test3" class="col s12 center ask">
+                        <h5 class="left">
+                            {{labels[2]}}
+                        </h5><br><br>
+                        <p ng-repeat="val in formData[2]">
+                            <input class="with-gap" ng-model="form[2]" ng-value="val.value" type="radio" id="form2{{$index}}" ng-click="cli('test4')"/>
+                            <label for="form2{{$index}}" class="black-text">{{val.name}}</label>
+                        </p>
+                        <button class="btn" type="button" name="button" ng-click="cli('test4')">ถัดไป</button>
+                    </div>
+                    <div id="test4" class="col s12 center ask">
+                        <h5 class="left">
+                            {{labels[3]}}
+                        </h5><br><br>
+                        <p ng-repeat="val in formData[3]">
+                            <input class="with-gap" ng-model="form[3]" ng-value="val.value" type="radio" id="form3{{$index}}" ng-click="cli('test5')"/>
+                            <label for="form3{{$index}}" class="black-text">{{val.name}}</label>
+                        </p>
+                        <button class="btn" type="button" name="button" ng-click="cli('test5')">ถัดไป</button>
+                    </div>
+                    <div id="test5" class="col s12 center ask">
+                        <h5 class="left">
+                            {{labels[4]}}
+                        </h5><br><br>
+                        <p ng-repeat="val in formData[4]">
+                            <input class="with-gap" ng-model="form[4]" ng-value="val.value" type="radio" id="form4{{$index}}" ng-click="cli('test6')"/>
+                            <label for="form4{{$index}}" class="black-text">{{val.name}}</label>
+                        </p>
+                        <button class="btn" type="button" name="button" ng-click="cli('test6')">ถัดไป</button>
+                    </div>
+                    <div id="test6" class="col s12 center ask">
+                        <h5 class="left">
+                            {{labels[5]}}
+                        </h5><br><br>
+                        <p ng-repeat="val in formData[5]">
+                            <input class="with-gap" ng-model="form[5]" ng-value="val.value" type="radio" id="form5{{$index}}" ng-click="cli('test7')"/>
+                            <label for="form5{{$index}}" class="black-text">{{val.name}}</label>
+                        </p>
+                        <button class="btn" type="button" name="button" ng-click="cli('test7')">ถัดไป</button>
+                    </div>
+                    <div id="test7" class="col s12 center ask">
+                        <h5 class="left">
+                            {{labels[6]}}
+                        </h5><br><br>
+                        <p ng-repeat="val in formData[6]">
+                            <input class="with-gap" ng-model="form[6]" ng-value="val.value" type="radio" id="form6{{$index}}" ng-click="cli('test8')"/>
+                            <label for="form6{{$index}}" class="black-text">{{val.name}}</label>
+                        </p>
+                        <button class="btn" type="button" name="button" ng-click="cli('test8')">ถัดไป</button>
+                    </div>
+                    <div id="test8" class="col s12 center ask">
+                        <h5 class="left">
+                            {{labels[7]}}
+                        </h5><br><br>
+                        <p ng-repeat="val in formData[7]">
+                            <input class="with-gap" ng-model="form[7]" ng-value="val.value" type="radio" id="form7{{$index}}" ng-click="cli('test9')"/>
+                            <label for="form7{{$index}}" class="black-text">{{val.name}}</label>
+                        </p>
+                        <button class="btn" type="button" name="button" ng-click="cli('test9')">ถัดไป</button>
+                    </div>
+                    <div id="test9" class="col s12 center ask">
+                        <h5 class="left">
+                            {{labels[8]}}
+                        </h5><br><br>
+                        <p ng-repeat="val in formData[8]">
+                            <input class="with-gap" ng-model="form[8]" ng-value="val.value" type="radio" id="form8{{$index}}" ng-click="cli('test10')"/>
+                            <label for="form8{{$index}}" class="black-text">{{val.name}}</label>
+                        </p>
+                        <button class="btn" type="button" name="button" ng-click="cli('test10')">ถัดไป</button>
+                    </div>
+                    <div id="test10" class="col s12 center ask">
+                        <h5 class="left">
+                            {{labels[9]}}
+                        </h5><br><br>
+                        <p ng-repeat="val in formData[9]">
+                            <input class="with-gap" ng-model="form[9]" ng-value="val.value" type="radio" id="form9{{$index}}" ng-click="cli('test11')"/>
+                            <label for="form9{{$index}}" class="black-text">{{val.name}}</label>
+                        </p>
+                        <button class="btn" type="button" name="button" ng-click="cli('test11')">ถัดไป</button>
+                    </div>
+                    <div id="test11" class="col s12 center ask">
+                        <h5 class="left">
+                            {{labels[10]}}
+                        </h5><br><br>
+                        <p ng-repeat="val in formData[10]">
+                            <input class="with-gap" ng-model="form[10]" ng-value="val.value" type="radio" id="form10{{$index}}" ng-click="cli('test12')"/>
+                            <label for="form10{{$index}}" class="black-text">{{val.name}}</label>
+                        </p>
+                        <button class="btn" type="button" name="button" ng-click="cli('test12')">ถัดไป</button>
+                    </div>
+                    <div id="test12" class="col s12 center ask">
+                        <h5 class="left">
+                            {{labels[11]}}
+                        </h5><br><br>
+                        <p ng-repeat="val in formData[11]">
+                            <input class="with-gap" ng-model="form[11]" ng-value="val.value" type="radio" id="form11{{$index}}" ng-click="cli('test13')"/>
+                            <label for="form11{{$index}}" class="black-text">{{val.name}}</label>
+                        </p>
+                        <button class="btn" type="button" name="button" ng-click="cli('test13')">ถัดไป</button>
+                    </div>
+                    <div id="test13" class="col s12 center ask">
+                        <h5 class="left">
+                            {{labels[12]}}
+                        </h5><br><br>
+                        <p ng-repeat="val in formData[12]">
+                            <input class="with-gap" ng-model="form[12]" ng-value="val.value" type="radio" id="form12{{$index}}"/>
+                            <label for="form12{{$index}}" class="black-text">{{val.name}}</label>
+                        </p>
+
+                    </div>
+
+                    <div class="input-field col s12 m12 l12 center" ng-show="percentage() === 100">
+                        <button ng-click="post()" href="#modal1" class="modal-trigger btn-large btn waves-effect waves-light light-blue darken-2 z-depth-0 " type="submit" name="action">Submit
+
+                        </button>
+                        <button ng-click="clear()" class="btn-large btn waves-effect waves-light red z-depth-0 ">Cancel
+
+                        </button>
+                    </div>
+                </div>
+
+            </form>
+
+        </form>
+    </div>
+</div>
+<div id="modal1" class="modal center">
+    <div class="modal-content " ng-show="showModel">
+        <h4>อยู่ในกลุ่ม
+            {{classify}}</h4>
+        <h5>อัตราความถูกต้องคือ
+            {{resRe}}
+            %</h5>
+        <h5>โดยส่วนใหญ่</h5>
+        <div class="row">
+            <div class="container">
+
+                <div class="col s2 m2 l2">
+                    &nbsp;
+                </div>
+                <div class="col s10 m10 l10">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td class="right-align">
+                                    <b>เกรดเฉลี่ยจะอยู่ที่</b>
+                                </td>
+                                <td>{{message.gpa}}</td>
+                            </tr>
+                            <tr>
+                                <td class="right-align">
+                                    <b>เข้าเรียนโดยวิธี</b>
+                                </td>
+                                <td>{{message.into}}</td>
+                            </tr>
+                            <tr>
+                                <td class="right-align">
+                                    <b>จบจากสาย</b>
+                                </td>
+                                <td>{{message.fin}}</td>
+                            </tr>
+                            <tr>
+                                <td class="right-align">
+                                    <b>งานพิเศษ</b>
+                                </td>
+                                <td>{{message.part_time}}</td>
+                            </tr>
+                            <tr>
+                                <td class="right-align">
+                                    <b>กิจกรรม</b>
+                                </td>
+                                <td>{{message.activity}}</td>
+                            </tr>
+                            <tr>
+                                <td class="right-align">
+                                    <b>การทำงาน</b>
+                                </td>
+                                <td>{{message.work}}</td>
+                            </tr>
+                            <tr>
+                                <td class="right-align">
+                                    <b>การเป็นผู้นำ</b>
+                                </td>
+                                <td>{{message.leader}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <div class="preloader-wrapper big active" ng-hide="showModel" style="position: absolute;top: 50%;left: 47%;">
+        <div class="spinner-layer spinner-blue">
+            <div class="circle-clipper left">
+                <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+                <div class="circle"></div>
+            </div>
+        </div>
+
+        <div class="spinner-layer spinner-red">
+            <div class="circle-clipper left">
+                <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+                <div class="circle"></div>
+            </div>
+        </div>
+
+        <div class="spinner-layer spinner-yellow">
+            <div class="circle-clipper left">
+                <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+                <div class="circle"></div>
+            </div>
+        </div>
+
+        <div class="spinner-layer spinner-green">
+            <div class="circle-clipper left">
+                <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+                <div class="circle"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="page-footer z-depth-0 blue-grey darken-1" style="margin-top:0px;padding-top:0px">
+    <div class="footer-copyright">
+        <div class="container">
+            <a class="grey-text text-lighten-4 left " href="">© 2016 IT_KMUTNB</a>
+            <a class="grey-text text-lighten-4 right " href="/about.html">ผู้จัดทำ</a>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

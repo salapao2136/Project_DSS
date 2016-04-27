@@ -6,10 +6,20 @@
 }
 
 .ask {
-  height:350px;
+  height:330px;
 }
 
 .ask .btn{
   position: absolute;
-  top: 700px;
+  top: 660px;
+  left:47%;
+}
+
+.modal {
+  top:5%;
+  min-height: 75%;
+}
+
+table tr td {
+  padding: 10px 5px 10px 5px
 }
