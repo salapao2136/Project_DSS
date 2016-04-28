@@ -42,7 +42,8 @@ angular.module('wekaApp', ['ngAnimate', 'ui.materialize'])
 
     var answer = function (res) {
       $scope.showModel = true
-      $scope.resRe = res[3] * 100
+      var x = res[3] * 100
+      $scope.resRe = x.toFixed(2)
       var imgres = res[2].split(':')
       if (imgres[1] === 'cluster0') {
         $scope.classify = 'ไม่ค่อยเหมาะสมเท่าไหร่'
