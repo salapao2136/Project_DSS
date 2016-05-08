@@ -38,7 +38,7 @@ app.get('/data', function (req, res) {
 })
 
 app.get('/online', function (req, res) {
-  res.send('Online')
+  res.send({status: 'online'})
 })
 
 var runCMD = function (result) {
