@@ -37,6 +37,10 @@ app.get('/data', function (req, res) {
   })
 })
 
+app.get('/online', function (req, res) {
+  res.send('Online')
+})
+
 var runCMD = function (result) {
   var cmd = "java -classpath 'public/resource/weka.jar' weka.classifiers.trees.J48 -l 'public/resource/bay2.model' -T 'public/resource/classify_unseen.arff' -p 0"
   exec(cmd, function (error, stdout, stderr) {
