@@ -37,7 +37,7 @@ app.post('/data', jsonParser, function (req, res) {
   }
 })
 
-app.get('/data', function (req, res) {
+app.get('/datas', function (req, res) {
   Student.find(function (err, data) {
     if (err === null) res.send(data)
     else res.sendStatus(400)
